@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+	<header class="header">
+		<h1><%= title %></h1>
+	</header>
+	<div class="content clearfix">
+		<ul class="ul">
+			<li><a href="/">主页</a></li>
+            <% if (user) { %>
+                <li><a href="/upload">上传</a></li>
+                <li><a href="/post">发表</a></li>
+                <li><a href="/logout">登出</a></li>
+            <% } else { %>
+                <li><a href="/login">登录</a></li>
+                <li><a href="/reg">注册</a></li>
+            <% } %>
+		</ul>
+	    
+	    <article class="article">
+            <% if (success) { %>
+                <div><%= success %></div>
+            <% } %>
+            <% if (error) { %>
+            <div><%= error %></div>
+            <% } %>
