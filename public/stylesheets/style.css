@@ -52,5 +52,27 @@ ul{
 	border: none;
 	cursor: pointer;
 }
+.post-content{
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+.edit{
+    display: inline-block;
+    margin: 3px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background-color: #f3f3f3;
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+}
+.edit:hover{
+    background: #f00;
+    color: #fff;
+    -webkit-transition: all .2s ease;
+}
 
 
