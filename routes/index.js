@@ -152,7 +152,7 @@ module.exports = function(app) {
     app.post('/upload', checkLogin);
     app.post('/upload', function (req, res) {
         req.flash('success', '文件上传成功！');
-        res.redirect('/upload');
+        res.redirect('back');
     });
 
     app.get('/u/:name', checkLogin);
