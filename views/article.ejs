@@ -1,10 +1,12 @@
 <%- include header %>
 
 <div>
-    <a class="edit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a>
-    <a class="edit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a>
+    <% if (user && (user.name == post.name)) { %>
+        <a class="submit" href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">编辑</a>
+        <a class="submit" href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">删除</a>
+    <% } %>
 </div>
-
+<br><br>
 <div class="info">
     作者：<a href="/u/<%= post.name %>"><%= post.name %></a> |
     日期：<%= post.time.minute %>
