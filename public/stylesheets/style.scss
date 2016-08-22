@@ -36,6 +36,9 @@ ul{
   line-height: 40px;
   text-align: center;
   float: left;
+  li{
+    height: 40px;
+  }
 }
 .article{
   float: left;
@@ -98,4 +101,15 @@ ul{
     background: #000;
     color: #fff;
   }
+}
+.search{
+  border: 0;
+  width: 70%;
+  text-align: center;
+  font-size: 1em;
+  margin: 0;
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  outline: none;
 }
