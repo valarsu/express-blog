@@ -119,7 +119,7 @@ Post.getOne = function (name, day, title, callback) {
                     doc.comments.forEach(function (comment) {
                         comment.content = markdown.toHTML(comment.content);
                     });
-                } 
+                }
                 callback(null, doc);//返回查询的第一篇文章
 
             });
@@ -211,5 +211,33 @@ Post.remove = function (name, day, title, callback) {
     });
 };
 
+//返回所有文章存档信息
+Post.getArchive = function (callback) {
+    mongodb.open(function (err, db) {
+        if (err) {
+            return callback(err);
+        }
+        db.collection('posts', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            //返回只包含name,time,title属性的文档组成的存档数组
+            collection.find({}, {
+                'name': 1,
+                'time': 1,
+                'title': 1
+            }).sort({
+                time: -1
+            }).toArray(function (err, docs) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                callback(null, docs);
+            });
+        });
+    });
+};
 
 module.exports = Post;
