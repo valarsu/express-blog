@@ -264,8 +264,7 @@ module.exports = function(app) {
             res.redirect('/');
         });
     });
-
-    app.get('/archive', checkLogin);
+    
     app.get('/archive', function (req, res) {
         Post.getArchive(function (err, posts) {
             if (err) {
@@ -282,7 +281,21 @@ module.exports = function(app) {
         });
     });
 
-
+    app.get('/tags', function (req, res) {
+        Post.getTags(function (err, posts) {
+            if (err) {
+                req.flash('error', err);
+                res.redirect('/');
+            }
+            res.render('tags', {
+                title: '标签',
+                posts: posts,
+                user: req.session.user,
+                success: req.flash('success').toString(),
+                error: req.flash('error').toString()
+            });
+        });
+    });
 
     function checkLogin(req, res, next) {
         if (!req.session.user) {
