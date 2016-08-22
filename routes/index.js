@@ -1,6 +1,7 @@
 var crypto = require('crypto');
 var User = require('../models/user.js');
 var Post = require('../models/post.js');
+var Comment = require('../models/comment');
 var express = require('express');
 
 // /* GET home page. */
@@ -197,6 +198,28 @@ module.exports = function(app) {
         });
     });
 
+    app.post('/u/:name/:day/:title', function (req, res) {
+        var date = new Date(),
+            time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ' + date.getHours() +
+                    ':' + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes());
+        var comment = {
+            name: req.body.name,
+            email: req.body.email,
+            website: req.body.website,
+            time: time,
+            content: req.body.content
+        };
+        var newComment = new Comment(req.params.name, req.params.day, req.params.title, comment);
+        newComment.save(function (err) {
+            if (err) {
+                req.flash('error', err);
+                return res.redirect('back');
+            }
+            req.flash('success', '留言成功!');
+            res.redirect('back');
+        });
+    });
+
     app.get('/edit/:name/:day/:title', checkLogin);
     app.get('/edit/:name/:day/:title', function (req, res) {
         var currentUser = req.session.user;
@@ -240,6 +263,7 @@ module.exports = function(app) {
             res.redirect('/');
         });
     });
+
 
 
 
