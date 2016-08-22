@@ -123,7 +123,8 @@ module.exports = function(app) {
     app.post('/post', checkLogin);
     app.post('/post', function(req, res) {
         var currentUser = req.session.user,
-            post = new Post(currentUser.name, req.body.title, req.body.post);
+            tags = [req.body.tag1, req.body.tag2, req.body.tag3],
+            post = new Post(currentUser.name, req.body.title, tags, req.body.post);
         post.save(function (err) {
             if(err) {
                 req.flash('error', err);
@@ -134,7 +135,7 @@ module.exports = function(app) {
         });
 	});
 
-    app.get('/post', checkLogin);
+    app.get('/logout', checkLogin);
 	app.get('/logout', function(req, res) {
         req.session.user = null;
         req.flash('success', '登出成功！');
