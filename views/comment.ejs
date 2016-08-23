@@ -1,11 +1,12 @@
 <br>
 <% if (post.comments) { %>
     <% post.comments.forEach(function (comment, index) { %>
-       <p>
+       <div style="padding-left: 4em">
+           <img src="<%= comment.head %>" alt="">
            <a href="<%= comment.website %>"><%= comment.name %></a>
            <span class="info"> 回复于<%= comment.time %> </span>
            <p><%- comment.content %></p>
-       </p>
+       </div>
     <% }) %>
 <% } %>
 

@@ -3,6 +3,7 @@
 <% posts.forEach(function (post, index) { %>
     <div>
         <h2><a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a></h2>
+        <a href="/u/<%= post.name %>"><img src="<%= post.head %>" class="r_head"></a>
     </div>
     <p class="info">
         作者：<a href="/u/<%= post.name %>"><%= post.name %></a> |

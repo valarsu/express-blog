@@ -113,3 +113,15 @@ ul{
   line-height: 30px;
   outline: none;
 }
+.l_head{
+  float: left;
+  margin-left: -4em;
+  box-shadow: 0 1px 4px #888;
+  width: auto !important;
+}
+.r_head{
+  float: right;
+  margin-top: -2.5em;
+  box-shadow: 0 1px 4px #888;
+  width: auto !important;
+}
