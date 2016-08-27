@@ -45,4 +45,4 @@ function downloadImg (uri, filename, callback) {
       console.log('res:' + res);
       request(uri).pipe(fs.createWriteStream('public/images/creeper/' + filename)).on('close', callback);
   });
-};
+}
