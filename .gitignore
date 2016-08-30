@@ -2,3 +2,4 @@
 /.idea/*
 /access.log
 /error.log
+/bower_components/

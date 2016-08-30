@@ -1,0 +1,21 @@
+{
+  "name": "express-blog",
+  "description": "install basis public static",
+  "main": "s",
+  "authors": [
+    "valarsu"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.9.1"
+  }
+}
